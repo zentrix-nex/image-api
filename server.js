@@ -7,7 +7,7 @@ const PORT = 5000;
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
-app.get('/random-image', (req, res) => {
+app.get('/', (req, res) => {
     const imagesDir = path.join(__dirname, 'images');
     fs.readdir(imagesDir, (err, files) => {
         if (err) return res.status(500).send('Error reading image directory.');
