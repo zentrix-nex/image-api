@@ -7,7 +7,7 @@ const PORT = 5000;
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
-app.get('/', (req, res) => {
+app.get('/random-image', (req, res) => {
     const imagesDir = path.join(__dirname, 'images');
     fs.readdir(imagesDir, (err, files) => {
         if (err) return res.status(500).send('Error reading image directory.');
@@ -19,6 +19,7 @@ app.get('/', (req, res) => {
         res.redirect(`/images/${randomImage}`);
     });
 });
+
 
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}/random-image`);
